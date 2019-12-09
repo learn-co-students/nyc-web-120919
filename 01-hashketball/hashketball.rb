@@ -1,38 +1,5 @@
 require 'pry'
 
-puts "hey"
-puts "welcome"
-
-# each   - very flexible, just does something for each element in a collection
-# map    - transformations
-# select - select an element ;  extract from the collection
-# find   - same thing as select but returns the FIRST element that matches
-
-numbers = [1,2,3,4,5,6,7,8,9,10]
-# print each number
-# numbers.each do |num| 
-#   puts num 
-# end
-
-new_numbers = numbers.map do |num|
-  "poop " * num
-end
-
-even_numbers = numbers.select do |num|
-  num % 2 == 0
-end
-
-# even_numbers = numbers.select do |num|
-#   if num == 4
-#     num * 100
-#   end
-# end
-
-found_number = numbers.find do |num|
-  num % 2 == 0
-end
-
-
 def game_hash
   {
     home: {
@@ -156,19 +123,20 @@ def all_players
   game_hash[:home][:players].concat(game_hash[:away][:players])
 end
 
-def find_player_by_name(player_name)
-  all_players.find do |player_name|
-    player_name[:player_name] == player_name
+def find_player(player_name)
+  all_players.find do |player|
+    player[:player_name] == player_name
   end
 end
 
-def find_points_for_player(player_name)
+def num_points_scored(player_name)
   # look through all the players
-  # if that player's name is equal to the inputed players name
-  find_player_by_name(player_name)[:points]
-  # return that player's points
+  # compare the player name
+  # if name matches, return points for that player
+
+  find_player(player_name)[:points]
 end
 
-
 binding.pry
-puts "to flatiron"
+
+
