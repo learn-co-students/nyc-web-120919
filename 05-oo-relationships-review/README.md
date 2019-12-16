@@ -10,6 +10,10 @@
 
 * user -< wish_list_item >- product
 
+## ERD
+
+![Wish List ERD](wish_list_erd.png) 
+
 ### User
 * √`User.new` - initializes with a name(string) and email(string)
 * √`user#name` - should return a string of the user's name, cannot be edited
