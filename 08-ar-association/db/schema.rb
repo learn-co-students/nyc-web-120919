@@ -10,23 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_142024) do
+ActiveRecord::Schema.define(version: 2019_12_19_160753) do
 
-  create_table "channels", force: :cascade do |t|
-    t.string "topic"
-    t.string "name"
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "channel_id"
+    t.integer "movie_id"
     t.string "content"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
