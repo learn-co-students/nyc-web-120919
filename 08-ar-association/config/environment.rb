@@ -7,6 +7,6 @@ ActiveRecord::Base.establish_connection(
   database: "db/development.sqlite"
 )
 
-ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger = Logger.new(STDOUT) # lets me see the SQL query that AR runs
 
 require_all 'app'       # use the require_all to load everything in app folder.
