@@ -16,3 +16,11 @@ _request_ to a server (just another computer).
 * response = RestClient.get(url)
 * in the response.body, we may get a string that looks like a hash, that is called a *JSON*
 * we can parse the JSON into an actual Hash and interact with it.
+
+
+## TTY-PROMPT
+This is just a nice to have. I encourage you to practice learning how to learn by trying to incorporate this input/output library into your app. However, do not let it take too much of your time. If you want to just do input output using `gets.chomp`, that is fine too. The main thing you should be practicing in your Projects are:
+* domain modeling
+* ActiveRecord
+  * Migrations
+  * `has_many`, `belongs_to`
