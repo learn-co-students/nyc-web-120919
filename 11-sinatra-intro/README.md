@@ -1,8 +1,8 @@
 ## Sinatra, MVC, & Routing
 
-# Question
+# Corneal 
 
-- What are all these damn files
+- scaffold a new Sinatra app
 
 # What is MVC
 
