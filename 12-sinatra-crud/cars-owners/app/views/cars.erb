@@ -1,0 +1,17 @@
+<h1>Hello, World</h1>
+
+
+
+<ul>
+
+
+<% @cars.each do |car| %>
+
+<a href="/cars/<%=car.id%>"> 
+ <li><%=car.name%></li>
+</a>
+
+<%end%>
+
+
+</ul>

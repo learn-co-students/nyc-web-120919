@@ -1,0 +1,10 @@
+<form action="/cars/<%=@car.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<input type="text" name="name" value="<%=@car.name%>">
+<input type="text" name="make" value="<%=@car.make%>">
+<input type="text" name="model" value="<%=@car.model%>">
+<input type="text" name="color" value="<%=@car.color%>">
+<input type="number" name="year" value="<%=@car.year%>">
+<input type="submit" value="submit">
+
+</form>
