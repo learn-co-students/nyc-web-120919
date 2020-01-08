@@ -1,0 +1,17 @@
+<h1>Cars#new</h1>
+<p>Find me in app/views/cars/new.html.erb</p>
+
+<%=form_tag "/cars" do%>
+<%=text_field_tag "car[name]"%>
+<%=text_field_tag "car[color]"%>
+<%=submit_tag "submit"%>
+<%end%>
+
+<br/>
+<h1>Form For:</h1>
+<%= form_for @car do |f| %>
+<%= f.text_field :name %>
+<%= f.text_field :color %>
+<%= f.number_field :year %>
+<%= f.submit :submit %>
+<% end %>
