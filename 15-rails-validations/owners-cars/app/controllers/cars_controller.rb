@@ -22,9 +22,16 @@ class CarsController < ApplicationController
   end
 
   def create
-    byebug
+
     @car = Car.new(car_params)
-    redirect_to "/cars/#{@car.id}" # car_path(@car)
+
+    if @car.save
+      redirect_to "/cars/#{@car.id}" # car_path(@car)
+    else
+      # {}
+      flash[:errors] = @car.errors.full_messages
+      redirect_to new_car_path
+    end
   end
 
   def edit

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :cars
   get '/cars', to: "cars#index", as: "cars" # cars_path => "/cars"
-  get '/cars/new', to: "cars#new" 
+  get '/cars/new', to: "cars#new", as: "new_car"
   get '/cars/:id', to: "cars#show", as: "car"
   post '/cars', to: "cars#create"
   get '/cars/:id/edit', to: "cars#edit", as: "edit_car"
