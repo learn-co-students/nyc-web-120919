@@ -1,0 +1,32 @@
+<h1>Cars#new</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <div>
+      <p>❌ <%= error %> 🤡</p>
+    </div>
+  <% end%>
+<% end %>
+
+<p>Find me in app/views/cars/new.html.erb</p>
+
+<br/>
+
+<h1>Form For:</h1>
+<%= form_for @car do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :color %>
+<%= f.text_field :color %>
+<%= f.label :make %>
+<%= f.text_field :make %>
+<%= f.label :model %>
+<%= f.text_field :model %>
+<%= f.label :year %>
+<%= f.number_field :year %>
+<%= f.label :owner %>
+<%= f.collection_select :owner_id, @owners, :id, :name%>
+<br>
+<%= f.submit :submit %>
+<% end %>
+
