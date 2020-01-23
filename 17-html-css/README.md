@@ -25,6 +25,7 @@
 
 ## Additional Resources
 
+[HTML Elements](https://www.w3schools.com/html/html_blocks.asp)
 [Awwwards](https://www.awwwards.com/)  
 [codrops](https://tympanus.net/codrops/css_reference/) - Fantastic resource for all things CSS  
 [w3schools](https://www.w3schools.com/html/default.asp) - Great HTML resource  
