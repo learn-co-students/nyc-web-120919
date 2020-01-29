@@ -1,122 +1,221 @@
-# Intro to the DOM 📜
+# Browser Events
 
-## Three things that JS allows us to do:
+3 things that JS allows us to do:
 
-1. Account for user interaction
-2. Interact with the web page (DOM)
+1. Allow user interaction <-- This lecture
+2. Change the DOM
 3. Run requests
 
 ## SWBATs
 
-- [ ] Draw DOM tree by looking at HTML
-- [ ] Explain what a DOM node is and what its most important attributes are
-- [ ] Use the Chrome Dev tools to explore the DOM tree and its attributes
-- [ ] Use JS to select DOM nodes
-- [ ] Use JS to add, remove, and edit DOM nodes
+- [ ] Use events to allow user interaction with the page
+- [ ] Identify important attributes on the event object and their uses
+- [ ] Identify commonly used events
+- [ ] Synthesize knowledge of DOM manipulation and events to allow user interaction to change DOM
+- [ ] *Bonus* Explain event propagation and identify how this can be used
 
-### The Document Object Model Overview
-- What is the DOM?
-  - The DOM (Document Object Model) is a representation of an HTML document as a **tree** (more on this later) that can be manipulated with JavaScript
-  - Javascript is a language created to manipulate the DOM
-  - "[JavaScript] DOM methods allow programmatic access to the tree; with them you can change the document's structure, style or content." - [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (more on this later)
+### What are some common things users do on a webpage
 
-## The DOM is a Tree 🎄
+1. Click
+2. Hover
+3. Scroll
+4. Type
+5. Submit
 
-- What is a tree in computer science? A data structure that represents some hierarchical structure; parent nodes (elements), child nodes, sibling nodes. Trees look like upside down trees:
+[All the Events](https://developer.mozilla.org/en-US/docs/Web/Events)
 
-![tree](https://webdocs.cs.ualberta.ca/~aixplore/learning/DecisionTrees/InterArticle/graphics/inverted-tree.gif)
+## Three things to create interaction with the DOM
 
-- Here is another representation of a tree with a root node and several children or branches:
+1. Find the element you want to trigger the page and use `addEventListener` to get to trigger code
+2. Decide what type of interaction this will be
+3. Decide what you want to happen when the interaction is triggered
 
-![tree data structure](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg.png)
+## What are Web Events 🤔
 
-- Here is a representation of our HTML as a tree. This is the DOM:
+- "In the case of the Web, events are fired inside the _browser window_, and tend to be attached to a specific item that resides in it — this might be a single HTML element, set of HTML elements, the HTML document loaded in the current tab, or the entire browser window. There are a lot of different types of events that can occur, for example:
 
-![tree structure via tutorial republic](https://www.tutorialrepublic.com/lib/images/html-dom-tree.gif)
+  - The user clicking the mouse over a certain element or hovering the cursor over a certain element.
+  - The user pressing a key on the keyboard.
+  - The user resizing or closing the browser window.
+  - A web page finishing loading.
+  - **A form being submitted.**
+  - A video being played, or paused, or finishing play.
+  - An error occurring.
+- You will gather from this (and from glancing at the [MDN Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)) that there are a lot of events that can be responded to.
 
----
+- Each available event has an **event handler**, which is a block of code (usually a user-defined **JavaScript function**) that will be run when the event fires. When such a block of code is defined to be run in response to an event firing, we say we are **registering an event handler**. Note that event handlers are sometimes called **event listeners** — they are pretty much interchangeable for our purposes, although strictly speaking, they work together. The listener **listens** out for the event happening, and the handler is the code that is run in response to it happening." - [MDN Introduction to Events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events).
+  - As it pertains to what we've seen so far, we can tell JavaScript to listen for certain events and invoke a **callback** function when that event occurs:
 
-- DOM (Document Object Model)
-  - The DOM is a tree structure with several child `nodes`. All of the elements in the tree are related to each other. Some elements may have children:
+```js
+const firstBtnOnPage = document.querySelector('button')
 
-```html
-<body>
-  <div >
-    <h1>Welcome to the DOM Dominion</h1>
-    <p>A magical land of trees and <em>mystical</em> properties</p>
-    <ul>
-      <li>Explore the trees</li>
-      <li>Discover mystical properties</li>
-    </ul>
-  </div>
-</body>
+firstBtnOnPage.addEventListener('click', function() {
+  console.log('BUTTON WAS CLICKED')
+})
 ```
 
----
-
-- This tree structure starts at the `document`, where `document` is the topmost **parent** of each individual `node` (HTML Element). Every single HTML element in the DOM is a `node`: `<p></p>`, `<h1></h1>`, `<img>`, etc. **If you are not comfortable with HTML syntax and/or HTML tags, go through the [intro to HTML section on W3Schools](https://www.w3schools.com/html/html_intro.asp)**
-- JavaScript allows us to **traverse** this tree to find and _manipulate_ different `nodes` (we'll see how in a bit).
-  - "The DOM model represents a document with a logical tree. Each branch of the tree ends in a node, and each node
-    contains objects. DOM methods allow programmatic access to the tree; with them you can change the document's
-    structure, style or content." -
-    [MDN Article on the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-- Elements (`nodes`) have properties that can be manipulated (`style`, `textContent`, `innerHTML`, etc). In this particular example, we'll be manipulating the `.src` attribute of some `img` tags.
-- Element interfaces
-  - Different elements (`table`, `p`, `image`) support different methods
-    - `image.src`, for instance
-    - `document.body.style.backgroundColor = 'red'`
-  - Refer to the documentation for each element you wish to manipulate to find out which properties/attributes you can manipulate. - [MDN HTML Element Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- We are telling `addEventListener` to invoke the **anonymous function** passed as the second argument **_when_** the event fires; we're waiting for something to happen then **responding** to this user event.
 
 ---
+## Listening for Events
 
-### DOM CRUD
+- JavaScript allows us to [traverse the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors) and find elements. Let's see how we can target a particular element and listen for events:
 
-- READ:
+- Assuming our HTML looks like this:
 
-- `node.getElementById`
-- `node.getElementsByTagName`
-- `node.getElementsByClassName`
-- `node.querySelector`
-- `node.querySelectorAll`
-  - We can also combine selectors for more specificity:
-    - We need a space between `#parent .child`
-    - We can chain selectors `div.image.highlighted`
-    - We can search for siblings with `~`
+```html
+<div id="comments">
+  <h3>Comments</h3>
+  <form id='comment-form'>
+    <div class="field">
+      <input id='new-comment' type='text' placeholder='New Comment' />
+      <input type='submit' class='btn' value="Submit" />
+    </div>
+  </form>
+  <div id="commentsContainer">
+  </div>
+</div>
+```
+
+- We can grab the `comment-form` and eventually listen to events:
+
+```javascript
+const commentForm = document.getElementById('comment-form')
+// OR querySelector
+// const commentForm = document.querySelector('#comment-form')
+```
+
+- Something to look out for. If we are loading our js files in the `head` tag of our HTML, there is a chance that the JavaScript code we have written will start executing **before our HTML has been loaded and parsed by the browser**. This might cause some element selectors to return `null`. As a precaution, we can listen for the `DOMContentLoaded` event.
+  - "The `DOMContentLoaded` event is fired when the initial HTML document has been completely loaded and parsed" - [MDN DOMContentLoaded Reference](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded). Let's add this to our code:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function DOMContentLoadedEventHandler() {
+  const commentForm = document.getElementById('comment-form')
+
+})
+```
+
+- In the snippet above, we are adding an **event listener** to the document and listening for the `DOMContentLoaded` event. When that event is fired, the anonymous function passed to `addEventListener` will be invoked.
+  - "`addEventListener()` sets up a function that will be called whenever the specified `event` is delivered to the target. Common targets are HTML `Element`, `Document`, and `Window`" - [MDN `addEventListener` Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+
+- Now that we're waiting for our DOM content to load, let's listen for a `submit` event on our form:
+  - "The `submit` event is fired when a form is submitted.
+  - Note that `submit` is fired **only** on the form element, not the button or submit input. (Forms are submitted, not buttons.)" - [MDN Article on the `submit` event](https://developer.mozilla.org/en-US/docs/Web/Events/submit)
+
+```javascript
+document.addEventListener('DOMContentLoaded', function DOMContentLoadedEventHandler() {
+  const commentForm = document.getElementById('comment-form')
+  commentForm.addEventListener('submit', function formSubmitEventHandler(event) {
+    console.log(event)
+  })
+
+})
+```
+
+- If we try adding something to the form and clicking submit, we'll see our `console.log` for a second then it will disappear.
+
+![](https://media.giphy.com/media/1L5YuA6wpKkNO/giphy.gif)
+
+- Forms will attempt to make an HTTP `POST` request on **submission**. Recall from Mod2 that our forms would send a `POST` request that was then handled by our controller (remember HTTP and the request/response cycle?). If we give our `form` an `action` attribute, it will try to `POST` to the endpoint specified by the `action` attribute:
+
+```html
+<form id="comment-form" action="/hotdog">
+  <div class="field">
+    <input id='new-comment' type='text' placeholder='New Comment' />
+    <input type='submit' class='btn' value="Submit" />
+  </div>
+</form>
+```
+
+- This form ⬆️ will try to send a `POST` request to `/hotdog`
+- If our form **does not have an action attribute** it will attempt to `POST` to the URL we are currently on, making it **appear as though** our page is being refreshed. **Even though it looks like the page is being refreshed, that is not technically what is happening. The form is sending a POST request out into the void**
 
 ---
 
-- UDATE:
+- Our current JS app is not currently sending data to a backend, so we'll need some way to **prevent** this **default** action of submitting the form 🤔
 
-- We can change/add any attribute of a `node`. Example: `body.style.backgroundColor = red`
-  - this will either update the `style.backgroudColor` if one already exists, or add a `style.backgroundColor` if one does not exist
-- `innerText`/`textContent`
-- `innerHTML`
+![spongebob and patrick contemplate HTML forms](https://media.giphy.com/media/TPl5N4Ci49ZQY/giphy.gif)
+
+- Let's tell our **event handler**––our callback function––to `preventDefault`:
+
+```js
+document.addEventListener('DOMContentLoaded', function() {
+  const commentForm = document.getElementById('comment-form')
+  commentForm.addEventListener('submit', function formSubmitEventHandler(event) {
+    event.preventDefault() //stop form from POSTING
+    console.log(event.target) //form
+  })
+})
+```
+
+- Some key points about the `event` object that is passed to our `formSubmitEventHandler` function as a parameter:
+  - "The Event interface represents any event which takes place in the DOM; some are user-generated (such as mouse or keyboard events), while others are generated by APIs (such as events that indicate an animation has finished running, a video has been paused, and so forth). There are many types of events, some of which use other interfaces based on the main Event interface. Event itself contains the properties and methods which are common to all events." - [MDN Article on `Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event)
+  - `event.target` refers to the **HTML Element** that dispatched the event. For example, if I tell my app to listen for `click` events and the user clicks on a `p` tag, `event.target` will be the `p` tag. If the user clicks on a `button` the `event.target` will be the button. In our case, the `form` is receiving the `submit` event.
+  - This is something I'd _strongly recommend_ **burning into your memory**: HTML forms will attempt to send a POST request. Any **child** of an HTML form such as an `<input/>` or `<button></button>` will **cause the form to submit**. YOU DO NOT WANT TO LISTEN FOR A CLICK EVENT IN A FORM; YOU SHOULD BE LISTENING FOR THE `submit` EVENT!!! **super important lol**
+
+![learn to use the internet](https://media.giphy.com/media/SPZFhfUJjsJO0/giphy.gif)
+
+- We need to grab the user's input _from the form_. That information is stored in the `input` tag **inside the form**. If we refer back to our `form` we can see that `input` is a **child** of the `form` itself:
+
+```html
+<form id="comment-form" action="/hotdog">
+  <div class="field">
+    <input id='new-comment' type='text' placeholder='New Comment' />
+    <input type='submit' class='btn' value="Submit" />
+  </div>
+</form>
+```
+
+- Since our `event.target` is the `comment-form` itself, we can grab the input using `querySelector`:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function DOMContentLoadedEventHandler() {
+
+  const commentForm = document.getElementById('comment-form')
+
+  commentForm.addEventListener('submit', function formSubmitEventHandler(event) {
+    event.preventDefault() //stop form from POSTING
+
+    const userInputField = event.target.querySelector('#new-comment')
+
+    const userInputString = userInputField.value
+  })
+
+})
+```
+
+- `userInputField` will give us the whole `input` element. Since we only care about the user's new comment, we can grab the `value` attribute which will be whatever comment the user typed into the field. Refer to the [MDN Docs for `input` tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) if you're unfamiliar.
+
+- Let's use the information the user typed into the form to add their comment to the page:
+
+```js
+document.addEventListener('DOMContentLoaded', function () {
+
+  const commentsContainer = document.getElementById('commentsContainer')
+
+  const commentForm = document.getElementById('comment-form')
+
+  commentForm.addEventListener('submit', function formSubmitEventHandler(event) {
+    event.preventDefault() //stop form from POSTING
+
+    const userInputField = event.target.querySelector('#new-comment')
+
+    const userInputString = userInputField.value
+
+    const commentPTag = document.createElement('p')
+    commentPTag.textContent = userInputString
+
+    commentsContainer.appendChild(commentPTag)
+
+  })
+
+})
+```
+- "In an HTML document, the document.createElement() method creates the HTML element specified by tagName, or an HTMLUnknownElement if tagName isn't recognized." - [MDN Article on `createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
+  - Calling `document.createElement('p')` will create a `p` tag element.
+  - This tag is an HTML object that we can _manipulate_ using JavaScript. We can change the style, or give it a particular `textContent` as a string.
+- We can then `append` that `p` tag to the DOM by calling `commentsContainer.appendChild(commentPTag)`. Also note that `commentsContainer` is declared at the top of our function.
 
 ---
 
-- DELETE:
 
-- `node.removeChild(childNode)`
-- `node.remove()`
-
----
-
-- CREATE:
-
-- `document.createElement`
-- `document.body.appendChild(element)`
-
----
-
-## External Resources:
-
-- [MDN Article on the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-- [MDN Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
-- [MDN NodeList reference](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
-- [MDN HTMLCollection reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
-- [CSS Selectors Cheatsheet](https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/)
-- [MDN Document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-- [MDN Document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-- [MDN Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
-- [When are Selected HTML Elements Live](https://stackoverflow.com/questions/28163033/when-is-nodelist-live-and-when-is-it-static)
-- [Difference Between the DOM and the BOM](https://stackoverflow.com/questions/4416317/what-is-the-dom-and-bom-in-javascript)

@@ -1,3 +1,18 @@
+let upVoteButtons = Array.from(document.getElementsByClassName('up-vote'))
+
+
+upVoteButtons.forEach(function(button){
+  button.addEventListener('click', incrementScore)
+})
+
+function incrementScore(event) {
+  let li = event.target.parentNode
+  let span = li.querySelector('span')
+  let score = span.innerText
+  let newScore = parseInt(score) + 1
+  span.innerText = newScore
+}
+
 
 const movies = [
   {
@@ -27,25 +42,71 @@ const movies = [
 ]
 
 
-function createLi(){
+function createLi(movie){
   let li = document.createElement('li')
   li.className = "movie"
 
   li.innerHTML = `
-    <h3>Gremlins</h3>
+    <h3>${movie.title}</h3>
     <img alt=""
-        src="https://images-na.ssl-images-amazon.com/images/I/51W8yqu8KNL._AC_.jpg" />
+        src="${movie.imageUrl}" />
     <h4>Year: </h4>
-    <p>1984</p>
-    <h4>Score: <span>0</span> </h4>
-    <button>Up Vote</button>
+    <p>${movie.year}</p>
+    <h4>Score: <span>${movie.score}</span> </h4>
+    <button class="up-vote">Up Vote</button>
     <button>Down Vote</button>
+    <button class="delete">&times;</button>
   `
   return li
 }
 
 let ul = document.getElementsByTagName('ul')[0]
 
-ul.append(createLi())
+movies.forEach(function (movie) {
+  let li = createLi(movie)
+  ul.append(li)
+})
 
 
+let deleteButtons = Array.from(document.getElementsByClassName('delete'))
+
+deleteButtons.forEach(function(button){
+  button.addEventListener("click", function(event) {
+    let li = event.target.parentNode
+    li.remove()
+  })
+})
+
+
+// 1. find the button
+// 2. add click listener to button
+// 3. on click, increment the text in the span of that li
+
+// let jawsButton = document.getElementsByTagName('button')[0]
+
+// jawsButton.addEventListener('click', function (event) {
+//   let li = event.target.parentNode
+//   let span = li.querySelector('span')
+//   let score = span.innerText
+//   let newScore = parseInt(score) + 1
+//   span.innerText = newScore
+// })
+
+
+// let welcomeImage = document.querySelector('img')
+
+// welcomeImage.addEventListener('click', function(event){
+//   console.log("clicking", event.target)
+//   let image = event.target
+//   image.style.border = "thick dashed blue"
+// })
+
+// welcomeImage.addEventListener('pointerover', function(event){
+//   console.log('mouse on')
+//   event.target.src = "https://www.nationalgeographic.com/content/dam/news/2016/07/19/slothlove/01_slothlove_leaves.jpg"
+// })
+
+// welcomeImage.addEventListener('mouseleave', function (event) {
+//   console.log('mouse off')
+//   event.target.src = "https://media.giphy.com/media/UDjF1zMreMld6/giphy.gif"
+// })
