@@ -5,7 +5,7 @@
       "title": "Jaws",
       "imageUrl": "https://resizing.flixster.com/h8e7W7cVaQhuLdSvABDkJk6r5sc=/206x305/v1.bTsxMTE2NjE5OTtqOzE4MzU0OzEyMDA7ODAwOzEyMDA",
       "year": 1975,
-      "score": 0
+      "score": 8
     },
     {
       "id": 2,
@@ -48,6 +48,34 @@
       "score": 0,
       "imageUrl": "https://vignette.wikia.nocookie.net/thething/images/b/bf/Thing_poster_01.jpg/revision/latest?cb=20111230144300",
       "id": 7
+    },
+    {
+      "title": "Knives Out",
+      "year": 2019,
+      "score": 900,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
+      "id": 8
+    },
+    {
+      "title": "Mrts. Maisel",
+      "year": "2019",
+      "imageUrl": "https://i.etsystatic.com/19472203/r/il/f20fef/1820446969/il_570xN.1820446969_25n0.jpg",
+      "score": 0,
+      "id": 9
+    },
+    {
+      "title": "Mrs Maisel 2",
+      "year": "2021",
+      "imageUrl": "https://i.etsystatic.com/19472203/r/il/f20fef/1820446969/il_570xN.1820446969_25n0.jpg",
+      "score": 0,
+      "id": 10
+    },
+    {
+      "title": "Mrs Maisel 3",
+      "year": "2022",
+      "imageUrl": "https://i.etsystatic.com/19472203/r/il/f20fef/1820446969/il_570xN.1820446969_25n0.jpg",
+      "score": 0,
+      "id": 11
     }
   ]
 }
