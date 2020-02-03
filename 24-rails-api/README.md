@@ -10,3 +10,4 @@
 
 
 
+`rails g resource Api::V1::Movie title year:integer score:integer imageUrl`

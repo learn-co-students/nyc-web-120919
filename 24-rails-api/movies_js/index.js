@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function(){
   const movieList = document.getElementsByTagName('ul')[0]
-  const baseUrl = "http://localhost:4000/movies"
+  const baseUrl = "http://localhost:3000/api/v1/movies"
 
 
   let getMovies = () => {
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 
   function updateScore(id, score){
-    // { score: score } equiv. to { score }
+    //   equiv. to { score }
 
     fetch(`${baseUrl}/${id}`, {
       method: "PATCH",
