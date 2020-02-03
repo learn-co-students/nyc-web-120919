@@ -8,6 +8,11 @@
 - [ ] Differentiate between 
 
 
+### Helpful Commands
+
+* create a Rails app in API mode with a Postgresql database (and not as a Git repository)
+  * `rails new movies-api --api -G -d=postgresql`
 
 
-`rails g resource Api::V1::Movie title year:integer score:integer imageUrl`
+* create a new resource:
+  * `rails g resource Api::V1::Movie title year:integer score:integer imageUrl`
