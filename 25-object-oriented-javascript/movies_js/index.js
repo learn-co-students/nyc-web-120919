@@ -1,63 +1,27 @@
 window.addEventListener('DOMContentLoaded', function(){
   const movieList = document.getElementsByTagName('ul')[0]
   const baseUrl = "http://localhost:3000/api/v1/movies"
-
+  const adapter = new Adapter({ baseUrl })
 
   let getMovies = () => {
-    fetch(baseUrl)
-    .then(function(response){
-      return response.json()
-    })
+    adapter.get()
     .then(function(movies){
-      movies.forEach(function(movie){
-        let li = createLi(movie)
-        movieList.append(li)
+      movies.forEach(function(movieObj){
+        const newMovie = new Movie(movieObj)
+        newMovie.render(movieList)
       })
     })
-  }
-
-  // fetch("http://localhost:4000/movies/")
-  // .then(response => response.json())
-  // .then(movies => {
-  //   movies.forEach(function(movie){
-  //     let li = createLi(movie)
-  //     movieList.append(li)
-  //   })
-  // })
-
-
-  function createLi(movie){
-    let li = document.createElement('li')
-    li.className = "movie"
-    li.dataset.id = movie.id
-
-    li.innerHTML = `
-      <h3>${movie.title}</h3>
-      <img alt=""
-          src="${movie.imageUrl}" />
-      <h4>Year: </h4>
-      <p>${movie.year}</p>
-      <h4>Score: <span>${movie.score}</span> </h4>
-      <button class="up-vote">Up Vote</button>
-      <button>Down Vote</button>
-      <button data-purpose="delete" data-coolTeachers="steven and matt and ian">&times;</button>
-    `
-    return li
   }
 
   movieList.addEventListener('click', function(event){
     if (event.target.className === 'up-vote') {
       console.log('voting up')
-      let id = event.target.parentNode.dataset.id
-      let li = event.target.parentNode
-      let span = li.querySelector('span')
-      let newScore = parseInt(span.innerText) + 1
+      let id = parseInt(event.target.parentNode.dataset.id)
+      const movie = Movie.find(id)
+      
+      movie.increaseScore(event)
 
-      // OPTIMISTIC RENDERING <= rendering the change without knowing if
-      // the changes to the DB were successful
-      span.innerText = newScore
-
-      updateScore(id, newScore)
+      updateScore(id, movie.score)
 
     } else if(event.target.dataset.purpose === 'delete') {
       let li = event.target.parentNode
@@ -65,18 +29,8 @@ window.addEventListener('DOMContentLoaded', function(){
     } 
   })
 
-
   function updateScore(id, score){
-    //   equiv. to { score }
-
-    fetch(`${baseUrl}/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        accept: "application/json"
-      },
-      body: JSON.stringify({ score })
-    })
+    adapter.patch(id, { score })
   }
 
   let formButton = document.createElement('button')
@@ -124,11 +78,12 @@ window.addEventListener('DOMContentLoaded', function(){
         body: JSON.stringify(newMovie)
       })
       .then(response => response.json())
-      .then(movie => {
+      .then(movieObj => {
         // PESSIMISTIC RENDERING <= rendering only after getting confirmation from 
         // the DB that the record was created
-        let li = createLi(movie)
-        movieList.append(li)
+
+        const newMovie = new Movie(movieObj)
+        newMovie.render(movieList)
       })
 
       newForm.reset()
@@ -140,3 +95,4 @@ window.addEventListener('DOMContentLoaded', function(){
 
   getMovies()
 })
+
