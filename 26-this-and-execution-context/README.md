@@ -10,9 +10,9 @@
 - Understand how we might be able to leverage `this` in JavaScript
 - When is the value of `this` set? When is it **NOT** set?
 
----
+--- 
 
-### Review of `self` in Ruby
+## Review of `self` in Ruby
 
 - There are _some_ similarities between `this` in JavaScript and `self` in Ruby. Looking at the similarities will get us _closer_ to understanding JavaScript's `this`. **Please do not think of them as being the same thing, however**.
 
@@ -38,23 +38,33 @@ andy.name # => self will be the instance
 
 - `self` in Ruby will always be the receiver of a method call; whatever appears to the left of the `.`
 
----
+--- 
 
-### `self` is NOT `this`
+## `self` is NOT `this`
 
 - The `this` keyword in JavaScript, much like the English word "this", is context dependent. If I'm eating a bowl of soup and say, "I don't like this", "this" will refer to the soup I'm eating. If I'm taking the L train and say "I hate this", "this" will refer to the L. "This" is determined by the context in which it is used (at least in English).
 
 - `this` in JavaScript works much in the same way, but there are several _specific rules_ that determine the context that `this` points to.
 
----
 
 ![](https://media.giphy.com/media/l46CbZ7KWEhN1oci4/giphy.gif)
 
+--- 
+
+## Execution Context
+
+> * In JavaScript, execution context is an abstract concept that holds information about the environment within which the current code is being executed.
+> * Every Execution Context contains a reference to a `this` object
+
+1. The **global execution context** is created *before* any code is executed.
+2. Whenever a function is *executed* (or called/invoked, these are all synonyms), a **new execution context** gets created and exists until that function finishes executing
+3. Every execution context provides `this` keyword, which points to an **object** to which the current code that’s being executed belongs.
+
 ---
 
-### The 4 JS environment rules that govern `this`
+## The 4 JS environment rules that govern `this`
 
-1.  `this` within a constructor function called with the keyword `new` in front will point to the newly created object:
+#### 1.  `this` within a constructor function called with the keyword `new` in front will point to the newly created object:
 
 ```javascript
 class Person {
@@ -72,9 +82,9 @@ typeof andy // "object"
   - Note that **we cannot use the `new` keyword for arrow functions**.
   - Read this [MDN Article on the `new` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) if you need a refresher on how `new` works.
 
----
+--- 
 
-2. `this` within a function called with `apply/call/bind` will be the object passed as the first parameter:
+#### 2. `this` within a function called with `apply/call/bind` will be the object passed as the first parameter:
 
 ```javascript
 const personOne = { name: 'andy' }
@@ -103,9 +113,9 @@ console.log(sayName())
 //browser window says hello from undefined at undefined!
 ```
 
----
+--- 
 
-3.  `this` within a `function` called within a particular context (i.e. `Object.method()`) will be the context/object (**assuming that function was declared with the `function` keyword**):
+#### 3.  `this` within a `function` called within a particular context (i.e. `Object.method()`) will be the context/object (**assuming that function was declared with the `function` keyword**):
 
 ```javascript
   const dog = {
@@ -118,9 +128,9 @@ console.log(sayName())
 dog.whatIsThis() //dog
 ```
 
----
+--- 
 
-4.  `this` for a simple function call `fn()` will be the window object (browser) or the global object (Node). If we are in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) `this` will be `undefined`. (**There are different rules for arrow functions that will be discussed later**)
+#### 4.  `this` for a simple function call `fn()` will be the window object (browser) or the global object (Node). If we are in [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) `this` will be `undefined`. (**There are different rules for arrow functions that will be discussed later**)
 
 ```javascript
 function sayThis() {
@@ -131,8 +141,9 @@ sayThis() //window
 
 ---
 
+## Arrow Functions
 
-- Arrow functions will maintain their enclosing execution context when evaluating `this`. In other words, `this` will be **whatever it was in the functions enclosing execution environment**. `this` in arrow functions will be resolved at the point of execution.
+- Arrow functions will maintain their enclosing execution context when evaluating `this`. In other words, `this` will be **whatever it was in the function's enclosing execution environment**. `this` in arrow functions will be resolved at the point of execution.
 
 - Unlike functions declared with the `function` keyword, arrow functions are much more predictable because arrow functions do not create their own `this` during execution. Instead, they 'absorb' or 'remember' whatever `this` was in their enclosing environment.
 
@@ -168,7 +179,7 @@ const angryChef = {
 angryChef.cookFood('toast') //undefined is cooking toast
 ```
 
----
+--- 
 
 - We can however leverage the lexical scoping of `this` if our object methods are higher order functions (return other functions):
 
@@ -191,7 +202,7 @@ dog.eatSnacks()
 
 ![dog eating cabbage](https://media.giphy.com/media/WLbtNNR5TKJBS/giphy.gif)
 
----
+--- 
 
 ## External Resources
 
