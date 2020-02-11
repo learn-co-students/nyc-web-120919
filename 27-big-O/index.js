@@ -1,12 +1,13 @@
 
 
-const reverseString = string => {
+const reverse = string => {
 
     // "matt" => "ttam"
-    // 
+    // n = 4, 1 + 4 + 1
     // "loves" => "sevol"
-    //
+    // n = 5, 1 + 5 + 1
     // “vaporwave” => “evawropav”
+    // O(n)
 
     let result = ""
 
@@ -17,6 +18,8 @@ const reverseString = string => {
     return result
 
 }
+
+
 
 const isPalindrome = string => {
 
@@ -73,6 +76,8 @@ const findChar = (string, target) => {
 
 
 const linearSearch = (arr, target) => {
+
+
     for (let i = 0; i < arr.length; i++) {
       console.log(`Remaining elements to search: ${arr.length - i}`);
   
@@ -85,12 +90,11 @@ const linearSearch = (arr, target) => {
   };
 
 
-
-
-
-
-
 const binarySearch = (arr, target) => {
+
+    // Assumes that arr is ordered
+
+
     console.log(`Remaining elements to search: ${arr.length}`);
   
     const midpoint = Math.floor(arr.length / 2);
@@ -159,11 +163,13 @@ const binarySearch = (arr, target) => {
 
         console.log(char)
         console.log(hash)
-        console.log(result)
+        
 
         if (hash[char]) {
             result = true
         }
+
+        console.log(result)
 
         hash[char] = true
 
