@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">  
+
+      // ReactDOM.render(HTML, javascript)
+      // ReactDOM.render(what, where)
+
+
+    function Card(props){
+      console.log(props)
+
+      /**
+       * props = {
+       * id: 'english',
+       * h1Text: 'my Text',
+       * h2Text: 'my h2 Text'
+       * }
+       * 
+       * 
+       */
+
+      return (
+        <div id={props.id} >
+          <h1>{ props.h1Text }</h1>
+          <h3>{ props.h2Text }</h3>
+        </div>
+      )
+    }
+    // Jay follow up on <Card />
+
+    let showDog = true;
+    ReactDOM.render(
+      <div>
+        {/*showDog 
+          ? <img src="https://random.dog/f5e0bd76-1103-4c71-bc86-7cd576587042.jpg" />
+        : null */}
+        <div className="card-item">Tester div!</div>
+        <Card 
+          h1Text={'Hello, World!'} 
+          h2Text={'Welcome to React'}
+          id={'english'}/>
+        <Card 
+          h1Text={'Hola, Mundo!'} 
+          h2Text={'Bienvenido a React'}
+          id={'spanish'}/>
+        <Card 
+          h1Text={'Hallo, Erde!!'} 
+          h2Text={'Willokmen zu React'}
+          id={'german'}/>
+
+        </div>
+        , 
+        document.getElementById('root'))
+          
+          // { Card('Hello, World!', 'Welcome to React', 'english')  }
+          // { Card('Hola, Mundo!', 'Bienvenido a React', 'spanish' )  }
+          // { Card('Hallo, Erde!!', 'Willokmen zu React', 'german' )  }
+          </script>
+  </body>
+</html>
