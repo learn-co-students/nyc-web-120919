@@ -12,7 +12,7 @@
 
 .main-container {
   
-  height: 90%;
+  height: 88%;
   width: 100%;
 
   overflow: scroll;
@@ -152,6 +152,11 @@ form#search-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  color: #7AF9F9;
+}
+
+form h3 {
+  color: #7AF9F9;
 }
 
 input.search-input {
@@ -164,7 +169,7 @@ input.search-input {
 
   
 
-  height: 10%;
+  height: 12%;
   width: 100%;
 
   border-bottom: 0.4vw solid #7AF9F9;
@@ -227,6 +232,7 @@ input.search-input {
 
   flex-grow: 3;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -242,12 +248,22 @@ span.icon-title {
   color: #7AF9F9;
   text-shadow: 0.2vw 0.2vw #E64191;
   font-weight: 700;
-  font-size: 3em;
+  font-size: 2.8em;
   letter-spacing: 0.8vw;
+}
+
+span.icon-subtitle {
+  color: #7AF9F9;
+  text-shadow: 0.2vw 0.2vw #E64191;
+  font-weight: 700;
+  font-size: 1.6em;
+  letter-spacing: 0.8vw;
+  align-self: flex-end;
 }
 
 
 .main-title{
   text-align: left;
   margin-left: 20px;
+  color: #7AF9F9;
 }

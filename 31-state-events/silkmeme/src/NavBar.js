@@ -6,6 +6,7 @@ function NavBar(props) {
         <div id="silk-meme-icon">
           <img className="icon-photo" alt="silk" src="https://heiq.com/wp-content/uploads/2016/10/shutterstock_329722193.jpg"/>
           <span className="icon-title">SilkMeme</span>
+          <span className="icon-subtitle">シルク</span>
         </div>
         <button
           onClick={props.changeSubreddit}
