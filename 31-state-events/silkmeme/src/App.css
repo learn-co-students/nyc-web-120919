@@ -130,6 +130,11 @@ input.search-input {
 
 }
 
+.nav.option.active {
+  /* font-size: 20em; */
+  background-color: yellowgreen;
+}
+
 
 
 #silk-meme-icon {

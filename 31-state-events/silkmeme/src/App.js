@@ -6,21 +6,24 @@ import MainContainer from './MainContainer';
 
 class App extends React.Component {
 
-  renderNavBar = () => {
-    return (
-      <div className="NavBar">
-          <div id="silk-meme-icon">
-            <img className="icon-photo" alt="silk" src="https://heiq.com/wp-content/uploads/2016/10/shutterstock_329722193.jpg"/>
-            <span className="icon-title">SilkMeme</span>
-          </div>
-          <button className="nav option">Featured</button>
-          <button id="subreddit-1" className="nav option">Memes</button>
-          <button id="subreddit-2" className="nav option">DankMemes</button>
-          <button id="subreddit-3" className="nav option">MeIRL</button>
-          <button className="nav option upload">Upload</button>
-          <button className="nav option login">Login</button>
-      </div>
-    )
+  // OLD MONEY
+  // constructor(){
+  //   super();
+
+  //   this.state = {
+  //     color: 'blue'
+  //   }
+
+  //   this.divClickHandle = this.divClickHandle.bind(this)
+  // }
+
+  // NEW MONEY
+  state = {
+    subreddit: 'featured' //'memes', 'dankmemes', 'meirl'
+  }
+
+  changeSubreddit = (event) =>{
+    this.setState({ subreddit: event.target.id })
   }
 
   renderUploadForm = () => {
@@ -37,13 +40,14 @@ class App extends React.Component {
     )
   }
   
+  
   render() {
     return (
       <div className="App">
-        {this.renderNavBar()}
+        <NavBar subreddit={this.state.subreddit} changeSubreddit={this.changeSubreddit}/>
         {this.renderUploadForm()}
         <SearchBar />
-        <MainContainer />
+        <MainContainer subreddit={this.state.subreddit} />
       </div>
     );
   }

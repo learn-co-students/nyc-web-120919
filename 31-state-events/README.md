@@ -13,6 +13,8 @@ State, Events, and Conditional Rendering
 ## Lecture Notes
 
 
+
+
 ### Using Events
 1. Find piece of DOM 
   - `const beef = document.getElementById("beef")`
@@ -61,3 +63,12 @@ You can pass anything in `props`, even functions! We will often find ourselves p
 - What are synthetic events and why does React use them? 
 - What are the two ways of creating state inside of a class component?
 - What is the correct way to update an app's state and why? 
+
+
+
+
+
+
+
+## Parking Lot
+- If you persist, does the event go back to the pool? If so, when? 
