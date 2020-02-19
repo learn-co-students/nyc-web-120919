@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: #1C1A23;
 }
 
 .App-logo {
@@ -83,32 +84,77 @@ input.search-input {
   flex-basis: 80%;
 }
 
-div#silk-meme-icon {
-  text-align: left;
-}
 
-img.icon-photo {
-  top: 0px;
-  left: 0px;
-  position: relative;
-  height: 50px;
-}
-
-span.icon-title {
-  position: absolute;
-  left: 13px;
-  top: 10px;
-  color: black;
-  font-weight: 700;
-  font-size: 1.5em;
-}
 
 .NavBar {
+
+
+  height: 10vh;
+  width: 100vw;
+
+  border-bottom: 0.4vw solid #7AF9F9;
+
+  
+
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-items: stretch;
+
 }
+
+.nav.option {
+
+  flex-grow: 1;
+  
+  border: none;
+  border-left: 0.4vw solid #7AF9F9;
+
+  font-size: 2vw;
+  font-weight: 700;
+
+  color: #7AF9F9;
+
+  background: none;
+
+  cursor: pointer;
+
+  transition: all 0.2s;
+  
+}
+
+.nav.option:hover {
+  outline: none;
+  background: #7AF9F9;
+  color: #1C1A23;
+
+}
+
+
+
+#silk-meme-icon {
+
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+img.icon-photo {
+  display: none;
+}
+
+
+span.icon-title {
+  color: #7AF9F9;
+  text-shadow: 0.2vw 0.2vw #E64191;
+  font-weight: 700;
+  font-size: 3em;
+  letter-spacing: 0.8vw;
+}
+
 
 .main-title{
   text-align: left;

@@ -19,7 +19,7 @@ class App extends React.Component {
           <button id="subreddit-3" className="nav option">MeIRL</button>
           <button className="nav option upload">Upload</button>
           <button className="nav option login">Login</button>
-        </div>
+      </div>
     )
   }
 
