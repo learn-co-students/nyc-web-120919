@@ -12,6 +12,19 @@ State and Forms
 
 
 ## Lecture Notes
+Four key elements of a controlled form!
+1. state 
+2. handleChange ==> func to update when the input/field is updated
+3. value attribute on the element itself
+4. submit handler
+
+## Features to Build / Improve
+- X upload meme form
+- X search form 
+- title of main container should change
+- **WHEN WE GET TO LIFECYCLE** Fix switching subreddits & pagination bug
+
+
 
 ### Vanilla JS Forms
 - We had HTML form
@@ -74,4 +87,3 @@ Doing this creates a 1-way connection wherein user input changes `state`. This i
 ## Questions
 - What is the difference between an uncontrolled and a controlled form in React? 
 - If two siblings need access to the same information, how and where should that information be stored? 
-- 
