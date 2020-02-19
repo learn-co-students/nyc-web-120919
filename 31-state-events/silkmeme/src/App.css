@@ -1,6 +1,26 @@
 .App {
   text-align: center;
   background: #1C1A23;
+
+  height: 100vh;
+  width: 100vw;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container {
+  
+  height: 90%;
+  width: 100%;
+
+  overflow: scroll;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .App-logo {
@@ -40,39 +60,93 @@
 
 
 
-
-.meme-title {
-  position: absolute;
-  /* display: none; */
-  /* perspective: 600px; */
-  transform: perspective(600px) rotateX(90deg) ;
-  transform-style: preserve-3d;
-  transition: all 1s;
-  top: 10px;
-  left: 10px;
-  background: lightskyblue;
-}
-
-img {
-  width: 134px;
-}
-
-.card-item:hover .meme-title {
-  /* display: block; */
-  transform: rotateX(0deg);
-}
-
-.card-item {
-  flex-basis: 30%;
-  position: relative;
-}
-
 .meme-container {
+
+  max-width: 1100px;
+
+  margin: 0 20px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+
+
+
+
+.card-item {
+
+  position: relative;
+
+  width: 240px;
+
+  height: 340px;
+
+  margin: 60px 20px 20px 20px;
+
+  border: 4px solid #E64191;
+  box-shadow: 0 0 8px #E64191, inset 0 0 8px #E64191;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+}
+
+.card-item img {
+  height: 260px;
+  max-width: 96%;
+  padding: 20px;
+}
+
+.meme-title {
+  position: absolute;
+  /* display: none; */
+  /* perspective: 600px; */
+
+  
+
+  top: -10%;
+  left: -10%;
+
+  width: 120%;
+
+  padding: 8px 16px;
+  background: #1C1A23;
+
+  font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  font-style: italic;
+  color: #7AF9F9;
+  text-shadow: 1px 1px 0 #E64191;
+
+  
+
+  border: 4px solid #E64191;
+  box-shadow: 0 0 8px #E64191, inset 0 0 8px #E64191;
+  border-radius: 4px;
+
+  transform: perspective(400px) rotateX(-10deg) rotateY(20deg) rotateZ(0);
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+
+
+}
+
+.card-item:hover .meme-title {
+  /* display: block; */
+  transform: translateY(-10px) scale(1.15) perspective(400px) rotateX(-12deg) rotateY(24deg) rotateZ(5deg);
+
+}
+
+
+
+
+
 
 form#search-form {
   display: flex;
@@ -88,9 +162,10 @@ input.search-input {
 
 .NavBar {
 
+  
 
-  height: 10vh;
-  width: 100vw;
+  height: 10%;
+  width: 100%;
 
   border-bottom: 0.4vw solid #7AF9F9;
 
@@ -130,9 +205,20 @@ input.search-input {
 
 }
 
+.nav.option:focus {
+  /* font-size: 20em; */
+  outline: none;
+}
+
 .nav.option.active {
   /* font-size: 20em; */
-  background-color: yellowgreen;
+  background-color: #E64191;
+}
+
+.nav.option.active:hover {
+  /* font-size: 20em; */
+  color: #7AF9F9;
+  cursor: auto;
 }
 
 

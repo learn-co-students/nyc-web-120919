@@ -3,10 +3,10 @@ import React from 'react';
 class CardItem extends React.Component {
   
   render(){
-    const {color, memeInfo: {url, title}} = this.props;
+    const {memeInfo: {url, title}} = this.props;
 
     return (
-      <div className="card-item" style={{ backgroundColor: color}}>
+      <div className="card-item" >
         <img src={url} alt="meme"/>
         <div className="meme-title">{title}</div>
       </div>

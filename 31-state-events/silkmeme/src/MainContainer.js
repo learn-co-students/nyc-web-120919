@@ -2,6 +2,8 @@ import React from 'react';
 import CardItem from './CardItem';
 import sampleMemes from './data';
 
+import SearchBar from './SearchBar';
+
 class MainContainer extends React.Component {
 
   state = {
@@ -17,6 +19,20 @@ class MainContainer extends React.Component {
     // this.setState({ startIndex: this.state.startIndex + 18 },
     //    () => { console.log('callback lyfe',this.state) }) // optional 2nd arg callback to setState
   }  
+
+  renderUploadForm = () => {
+    return (
+      <div className="upload-form">
+        <form>
+          <h3>Upload a new Silky Meme</h3>
+            <input placeholder="Title"/>
+            <input placeholder="Image URL"/>
+            <button type="submit">Submit</button>
+        </form>
+
+      </div>
+    )
+  }
   
   render(){
 
@@ -33,11 +49,14 @@ class MainContainer extends React.Component {
     let memeCards = filteredMemes.slice(this.state.startIndex, this.state.startIndex + 18).map((memeInfo, index) => 
       <CardItem 
         key={index} 
-        memeInfo={memeInfo}
-        color={  index % 2 ? 'white' : 'skyblue'  }/> )
+        memeInfo={memeInfo}/> )
   
     return (
       <div className="main-container">
+
+
+            {this.renderUploadForm()}
+            <SearchBar />
             <h1 className="main-title">Trending!!!!</h1>{/** this might change once we've got those options up top */}
             <div className="meme-container"> {memeCards} </div>
             <div className="page-nav">
