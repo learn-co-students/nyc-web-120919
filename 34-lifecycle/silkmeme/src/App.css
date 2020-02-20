@@ -267,3 +267,98 @@ span.icon-subtitle {
   margin-left: 20px;
   color: #7AF9F9;
 }
+
+
+.upload-form form {
+
+  margin: 4vw 0;
+  padding: 2vw;
+
+  border: 4px solid #E64191;
+  box-shadow: 0 0 8px #E64191, inset 0 0 8px #E64191;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.upload-form form input {
+
+  margin: 1vw;
+
+  height: 3vw;
+  width: 80%;
+
+  padding: 0 1vw;
+
+  border-radius: 1vw;
+  border: 2px solid #61dafb;
+
+  font-size: 1.4vw;
+
+  color: #1C1A23;
+
+  
+}
+
+.upload-form form input:focus {
+  outline: none;
+}
+
+.upload-form form h3 {
+
+  margin: 1vw;
+  font-family: Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 2.4vw;
+  text-shadow: 0.2vw 0.2vw #E64191;
+  
+
+}
+
+.upload-form form button {
+
+  margin: 1vw;
+
+  width: 8vw;
+  height: 3vw;
+
+  border: none;
+  border-radius: 1vw;
+
+  transition: all 0.2s;
+
+  font-size: 1.2vw;
+
+  color: white;
+
+}
+
+.upload-form form button:focus {
+  outline: none;
+}
+
+.button-on {
+
+  background: #E64191;
+  cursor: pointer;
+
+  box-shadow: 0.2vw 0.3vw 0 white;
+
+} 
+
+.button-on:active {
+
+  transform: translate(0.1vw, 0.2vw);
+  box-shadow: 0.1vw 0.1vw 0 white;
+
+}
+
+.button-off {
+
+  background: #282c34;
+  cursor: auto;
+
+}
