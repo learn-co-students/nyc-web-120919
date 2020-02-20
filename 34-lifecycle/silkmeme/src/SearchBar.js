@@ -10,7 +10,7 @@ XXXXXX submitHandler
 function SearchBar(props) {
 
     return (
-      <div className="search-bar">
+      <div className={`search-bar ${ props.searchInput.length > 0 ? "search-bar-animate" : ""}`}>
           <input
             value={props.searchInput}
             onChange={props.handleSearchInput} 
