@@ -8,4 +8,5 @@ class Api::V1::StoriesController < ApplicationController
         @story = Story.find(params[:id])
         render json: @story, status: :ok
     end
+    #wtf mate?
 end
