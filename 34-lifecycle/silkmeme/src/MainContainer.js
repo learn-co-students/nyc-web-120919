@@ -1,19 +1,35 @@
 import React from 'react';
 import CardItem from './CardItem';
 import sampleMemes from './data';
-
 import SearchBar from './SearchBar';
 import UploadMemeForm from './UploadMemeForm';
 
-// opt + shift + f auto format
-// real life metaphor for controlled forms 
+const APIBase = 'http://localhost:3000/api/v1'
+
+// 1. X fetch memes from our API
+// 2. Fix pagination + selecting subreddit feature bug
 
 class MainContainer extends React.Component {
 
   state = {
     startIndex: 0,
-    memes: sampleMemes,
+    memes: [],
     searchInput: ''
+  }
+
+  componentDidMount(){
+    fetch(APIBase + '/memes')
+      .then(res => res.json())
+      .then(memes => {
+        this.setState({ memes })
+      })
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.subreddit !== prevProps.subreddit){
+      console.log('current: ', this.props.subreddit, ' & past: ', prevProps.subreddit)
+      this.setState({ startIndex: 0 })
+    }
   }
 
   addNewMeme = (newMeme) => {
@@ -42,11 +58,13 @@ class MainContainer extends React.Component {
       }
     }).filter( item => item.title.includes(this.state.searchInput))
 
-    let memeCards = filteredMemes.slice(this.state.startIndex, this.state.startIndex + 18).map((memeInfo, index) =>
-      <CardItem
-        key={index}
-        memeInfo={memeInfo} />
-    )
+    let memeCards = filteredMemes
+      .slice(this.state.startIndex, this.state.startIndex + 18)
+      .map((memeInfo, index) =>
+        <CardItem
+          key={index}
+          memeInfo={memeInfo} />
+      )
 
     return (
       <div className="main-container">

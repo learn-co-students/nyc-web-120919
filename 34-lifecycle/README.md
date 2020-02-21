@@ -9,6 +9,25 @@ Component Lifecycle Methods
 
 ## Lecture Notes
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [React Spinner Loader](https://www.npmjs.com/package/react-loader-spinner)
 
 ### Mounting (Birth)
