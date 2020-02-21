@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 
 gem 'fast_jsonapi'
+gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 
 
