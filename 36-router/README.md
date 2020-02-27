@@ -30,20 +30,6 @@ React Router
 
 ## SPAs
 
-### Benefits
-
-
-### Challenges 
-
-
-
-## Dynamic Routing from Rails
-
-
-## Component Notation vs Render Notation
-
-
-
 ## Parking Lot
 
 

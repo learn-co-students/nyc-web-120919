@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NavBar(props) {
     return (
@@ -8,17 +9,18 @@ function NavBar(props) {
           <span className="icon-title">SilkMeme</span>
           <span className="icon-subtitle">シルク</span>
         </div>
-        <button
+        <Link
+          to="/"
           onClick={props.changeSubreddit}
           id="featured" 
           className={`nav option ${props.subreddit === 'featured' ? 'active': '' }`}>
             Featured
-        </button>
-        <button onClick={props.changeSubreddit} id="memes" className={`nav option ${props.subreddit === 'memes' ? 'active': '' }`}>Memes</button>
-        <button onClick={props.changeSubreddit} id="dankmemes" className={`nav option ${props.subreddit === 'dankmemes' ? 'active': '' }`}>DankMemes</button>
-        <button onClick={props.changeSubreddit} id="meirl" className={`nav option ${props.subreddit === 'meirl' ? 'active': '' }`}>MeIRL</button>
-        <button className="nav option upload">Upload</button>
-        <button className="nav option login">Login</button>
+        </Link>
+        <Link to="/" onClick={props.changeSubreddit} id="memes" className={`nav option ${props.subreddit === 'memes' ? 'active': '' }`}>Memes</Link>
+        <Link to="/" onClick={props.changeSubreddit} id="dankmemes" className={`nav option ${props.subreddit === 'dankmemes' ? 'active': '' }`}>DankMemes</Link>
+        <Link to="/" onClick={props.changeSubreddit} id="meirl" className={`nav option ${props.subreddit === 'meirl' ? 'active': '' }`}>MeIRL</Link>
+        <Link to="/upload" className="nav option upload">Upload</Link>
+        <Link to="/login" className="nav option login">Login</Link>
       </div>
     );
   }

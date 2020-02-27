@@ -15,6 +15,7 @@ class UploadMemeForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.addNewMeme({ ...this.state, subreddit: 'memes' })
+        this.props.history.push('/')
         this.setState({ title: '', url: '' })
     }
 
