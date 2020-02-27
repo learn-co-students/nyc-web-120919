@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 users = ["Greg", "Caryn", "Ian", "Matt"]
 students = []
 subreddits = ['memes', 'dankmemes', 'meirl']
@@ -399,5 +401,13 @@ memes.each do |meme|
         title: meme[:title],
         url: meme[:url],
         subreddit_id: meme[:subredditId]
+    })
+end
+
+50.times do 
+    Comment.create({
+        meme: Meme.all.sample,
+        user: User.all.sample,
+        content: Faker::Hacker.say_something_smart
     })
 end

@@ -3,7 +3,7 @@ import CardItem from '../components/CardItem';
 import SearchBar from '../components/SearchBar';
 import UploadMemeForm from '../components/UploadMemeForm';
 
-const APIBase = 'https://silkmeme-backend.herokuapp.com/api/v1'
+const APIBase = 'http://localhost:3000/api/v1'
 
 class MainContainer extends React.Component {
 

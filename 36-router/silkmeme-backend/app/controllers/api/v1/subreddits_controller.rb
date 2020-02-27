@@ -6,6 +6,8 @@ class Api::V1::SubredditsController < ApplicationController
 
     def show
         @subreddit = Subreddit.find(params[:id])
-        render json: @subreddit, status: :ok
+        @memes = Meme.where(subreddit: @subreddit)
+
+        render json: {subreddit: @subreddit, memes: @memes}, status: :ok
     end
 end

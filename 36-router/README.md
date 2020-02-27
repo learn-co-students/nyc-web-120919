@@ -20,10 +20,10 @@ React Router
 
 ### Features
 - [ ] Login / Sign Up Pages
-- [ ] Dynamic Routes for 
-[MovieApp Wireframe and Component Hierarchy](https://awwapp.com/b/ui0yjws5o/)
-- [ ] different routes for main movie view and login 
-- [ ] dynamic routing for individual movie view
+- [ ] Upload page (and reroute to / after)
+- [ ] Dynamic routes for /memes/:id
+- [ ] Back button behavior from /memes/:id to /
+- [ ] Bonus: prev/next button behavior on /memes/:id
 
 ## Lecture Notes
 - [Example with All of Ze Routes](https://github.com/sbal13/Project_Athena_client/blob/master/src/App.js)
@@ -31,32 +31,17 @@ React Router
 ## SPAs
 
 ### Benefits
-- hotreloading (webpack)
-- users are used to it 
-- after initial load, you got everything. no additional frontend requests necessary
+
 
 ### Challenges 
-- browser navigation ( we don't have specific urls to navigate through )
-- no history 
-- no sharing, no bookmarking 
-- as it grows, gets infinitely more complex 
-- that initial load might take minute 
+
 
 
 ## Dynamic Routing from Rails
-SingleMovieView ==> /movies/:id
-AllMovies ==> /movies
-Login ==> /login
-Signup ==> /signup
 
 
+## Component Notation vs Render Notation
 
-
-### Component Notation vs Render Notation
-Component Notation just takes a component name and automatically adds the routerProps as props to it (history, location, match)
-
-Render Notation takes a callback that returns a component, written as JSX. We do this so we can pass our own props.
-if you need routerProps, need to explicitly pass to your component
 
 
 ## Parking Lot

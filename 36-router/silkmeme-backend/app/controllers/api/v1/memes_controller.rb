@@ -7,7 +7,9 @@ class Api::V1::MemesController < ApplicationController
 
     def show
         @meme = Meme.find(params[:id])
-        render json: @meme, status: :ok    
+        @comments = Comment.where(meme: @meme)
+
+        render json: {meme: @meme, comments: @comments}, status: :ok    
     end
 
     def create
