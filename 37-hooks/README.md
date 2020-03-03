@@ -141,6 +141,7 @@ When might that be necessary? Consider a great-great-great-great-great-great-gra
 - [Why React Hooks? A Developer's Perspective](https://hackernoon.com/why-react-hooks-a-developers-perspective-2aedb8511f38)
 - [React Hooks: useState(using the state hook)](https://hackernoon.com/react-hooks-usestate-using-the-state-hook-89ec55b84f8c)
 - [React Hooks: useState and useEffect](https://levelup.gitconnected.com/react-hooks-usestate-and-useeffect-2d0b870c654f)
+- [Optimizing with React Hooks](https://itnext.io/optimizing-react-code-with-hooks-3eaaf5978351)
 
 
 ### Contributors

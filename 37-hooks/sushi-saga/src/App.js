@@ -42,7 +42,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="app">
         <SushiContainer sushis={this.state.sushis} eatSushi={this.eatSushi} />
