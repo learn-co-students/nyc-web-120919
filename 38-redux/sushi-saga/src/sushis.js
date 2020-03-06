@@ -1,4 +1,4 @@
-export default sushis = [
+export const sushis = [
       {
         "id": 1,
         "name": "Maguro Magic",

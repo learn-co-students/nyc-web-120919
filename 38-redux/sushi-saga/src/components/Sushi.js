@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux';
+import { eatSushiCreator } from '../actionCreators'
 
 const Sushi = (props) => {
   return (
@@ -18,4 +20,11 @@ const Sushi = (props) => {
   )
 }
 
-export default Sushi
+const mdp = dispatch => {
+  return {
+    eatSushi: (id, price, eaten) => dispatch(eatSushiCreator({id, price, eaten}))
+  }
+}
+
+
+export default connect(null, mdp)(Sushi)
