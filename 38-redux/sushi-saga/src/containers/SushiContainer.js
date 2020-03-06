@@ -2,10 +2,10 @@ import React, { Fragment } from 'react'
 import MoreButton from '../components/MoreButton'
 import Sushi from '../components/Sushi'
 import { connect } from 'react-redux';
-import { nextPageCreator, eatSushiCreator } from '../actionCreators';
+import { nextPageCreator } from '../actionCreators';
 
 const SushiContainer = props => {
-  let displayedSushi = props.sushis.slice(props.startIndex, props.startIndex + 4) // (startIndex, exclusive endIndex) LOOK AT THE DOCS
+  let displayedSushi = props.sushis.slice(props.startIndex, props.startIndex + 4) 
   
   return (
     <Fragment>

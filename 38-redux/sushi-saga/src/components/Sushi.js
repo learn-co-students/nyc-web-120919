@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { eatSushiCreator } from '../actionCreators'
 
@@ -10,7 +10,7 @@ const Sushi = (props) => {
         { 
           props.eaten 
           ? null
-          : <img src={props.img_url } width="100%" />
+          : <img src={props.img_url} alt="sushi" width="100%" />
         }
       </div>
       <h4 className="sushi-details">

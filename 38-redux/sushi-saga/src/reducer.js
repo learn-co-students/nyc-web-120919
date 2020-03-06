@@ -1,10 +1,7 @@
 import { sushis } from './sushis';
-import { eatSushiCreator } from './actionCreators';
-// Endpoint!
-const API = "http://localhost:3000/sushis"
 
 const initialState = {
-    sushis: sushis,
+    sushis: [],
     eatenSushis: [],
     budget: 105,
     startIndex: 0
@@ -18,10 +15,9 @@ const reducer = (prevState=initialState, action) => {
             if( nextIndex >= prevState.sushis.length ){ nextIndex = 0 } // this is for the page wrap around 
             return {...prevState, startIndex: nextIndex}
         case 'EAT_SUSHI':
-            // do those same calculations
-            return eatSushiHelper(action.payload, prevState) //{...prevState, sushis: newVersion, eatenSushis: newVersion, budget: newVersion}
+            return eatSushiHelper(action.payload, prevState) 
         case 'FETCH_SUSHI':
-            return {...prevState}
+            return {...prevState, sushis: action.payload }
         case 'ADD_TO_WALLET':
             return {...prevState}
         default:
